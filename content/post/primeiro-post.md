@@ -1,7 +1,7 @@
 ---
 title: "Visualizações Açude de Boqueirão"
 date: 2017-11-16T13:26:56-03:00
-draft: true
+draft: false
 ---
 
 Primeira postagem do site de Fabiana :)
