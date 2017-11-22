@@ -4,8 +4,8 @@ date: 2017-11-16T13:26:56-03:00
 draft: false
 ---
 
-Primeira postagem do site de Fabiana :)
-aurhaisuhiahrioahsoiahs <!--more--> dp aspdi aspid asdhasp
+Primeira postagem do site 
+ <!--more-->
 
 <div id="vis" width=300></div>
 
@@ -14,7 +14,7 @@ aurhaisuhiahrioahsoiahs <!--more--> dp aspdi aspid asdhasp
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"></script>
 <script>
     const spec = {
-  "title": "Volume do Açude de Boqueirão ao Longo dos Anos",
+    "title": "Volume do Açude de Boqueirão ao Longo dos Anos",
   "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
   "data": {
     "url": "https://api.insa.gov.br/reservatorios/12172/monitoramento",
@@ -27,12 +27,12 @@ aurhaisuhiahrioahsoiahs <!--more--> dp aspdi aspid asdhasp
    "width": 600,
    "height": 230,
    "mark": {
-    "type": "line",
+    "type": "bar",
     "interpolate": "monotone"
   },
   "encoding": {
     "x": {
-      "timeUnit": "year",
+      "timeUnit": "month",
       "field": "DataInformacao",
       "type": "temporal",
       "axis": {
@@ -46,7 +46,8 @@ aurhaisuhiahrioahsoiahs <!--more--> dp aspdi aspid asdhasp
       "axis": {
         "title": "Volume (%)"
       }
-    }
+    },
+    "color": {"value": "red"}
   }
 };
   	vegaEmbed('#vis', spec).catch(console.warn);
