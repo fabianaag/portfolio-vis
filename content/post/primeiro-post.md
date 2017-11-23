@@ -49,7 +49,16 @@ Primeira postagem do site
     },
     "color": {"value": "red"}
   }
+
+
+
+
 };
   	vegaEmbed('#vis', spec).catch(console.warn);
 </script>
+
+
+
+
+
 

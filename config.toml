@@ -33,7 +33,7 @@ publishDir = "docs"
 
 [author]
   name = "Fabiana Alves"
-  bio = "Portofólio da disciplina de Visualização de dados"
+  bio = "Portofólio da disciplina de Visualização da Informação"
   location = "Brasil"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
   # gravatarEmail = "thibaud.lepretre@gmail.com"
