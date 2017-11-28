@@ -4,7 +4,10 @@ date: 2017-11-16T13:26:56-03:00
 draft: false
 ---
 
-Primeira postagem do site 
+Volume do Açude de Boqueirão por meses.
+
+
+a relação entre o maior São João do Mundo e a maior crise hídrica da história de Campina Grande nos mostra duas faces da mesma moeda a da irracionalidade capitalista que superaremos com a luta.
  <!--more-->
 
 <div id="vis" width=300></div>
