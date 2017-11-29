@@ -1,4 +1,4 @@
-<p>&lt;!DOCTYPE html&gt;
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
@@ -19,189 +19,184 @@
         <div class="row mychart" id="chart">
       </div>
       </div>
-    </div></p>
+    </div>
 
-<pre><code>&lt;style&gt;
-  .mychart rect {
-    fill: steelblue;
-  }
+    <style>
+      .mychart rect {
+        fill: steelblue;
+      }
 
-  .mychart rect:hover {
-    fill: goldenrod;
-  }
+      .mychart rect:hover {
+        fill: goldenrod;
+      }
 
-  .mychart text {
-    font: 12px sans-serif;
-    text-anchor: left;
-    color: black;
-  }
-&lt;/style&gt;
+      .mychart text {
+        font: 12px sans-serif;
+        text-anchor: left;
+        color: black;
+      }
+    </style>
 
-&lt;script type=&quot;text/javascript&quot;&gt;
-  &quot;use strict&quot;
+    <script type="text/javascript">
+      "use strict"
 
-  var dadosBoqueirao = [{
-    &quot;mes&quot;: 1,
-    &quot;dez_percentil&quot;: 19.34,
-    &quot;mediana&quot;: 67.9,
-    &quot;noventa_percentil&quot;: 89.86
-  }, {
-    &quot;mes&quot;: 2,
-    &quot;dez_percentil&quot;: 20.32,
-    &quot;mediana&quot;: 65.2,
-    &quot;noventa_percentil&quot;: 89.14
-  }, {
-    &quot;mes&quot;: 3,
-    &quot;dez_percentil&quot;: 20.95,
-    &quot;mediana&quot;: 78.7,
-    &quot;noventa_percentil&quot;: 100
-  }, {
-    &quot;mes&quot;: 4,
-    &quot;dez_percentil&quot;: 27.14,
-    &quot;mediana&quot;: 87.1,
-    &quot;noventa_percentil&quot;: 100
-  }, {
-    &quot;mes&quot;: 5,
-    &quot;dez_percentil&quot;: 27.16,
-    &quot;mediana&quot;: 85.1,
-    &quot;noventa_percentil&quot;: 102.04
-  }, {
-    &quot;mes&quot;: 6,
-    &quot;dez_percentil&quot;: 26,
-    &quot;mediana&quot;: 83.5,
-    &quot;noventa_percentil&quot;: 100.88
-  }, {
-    &quot;mes&quot;: 7,
-    &quot;dez_percentil&quot;: 24.88,
-    &quot;mediana&quot;: 81.7,
-    &quot;noventa_percentil&quot;: 100.32
-  }, {
-    &quot;mes&quot;: 8,
-    &quot;dez_percentil&quot;: 23.68,
-    &quot;mediana&quot;: 79.9,
-    &quot;noventa_percentil&quot;: 99.24
-  }, {
-    &quot;mes&quot;: 9,
-    &quot;dez_percentil&quot;: 22.36,
-    &quot;mediana&quot;: 77.8,
-    &quot;noventa_percentil&quot;: 96.82
-  }, {
-    &quot;mes&quot;: 10,
-    &quot;dez_percentil&quot;: 20.92,
-    &quot;mediana&quot;: 74,
-    &quot;noventa_percentil&quot;: 94.12
-  }, {
-    &quot;mes&quot;: 11,
-    &quot;dez_percentil&quot;: 19.62,
-    &quot;mediana&quot;: 70.4,
-    &quot;noventa_percentil&quot;: 91.34
-  }, {
-    &quot;mes&quot;: 12,
-    &quot;dez_percentil&quot;: 19.06,
-    &quot;mediana&quot;: 67.3,
-    &quot;noventa_percentil&quot;: 89.42
-  }];
-  // definicoes de altura e largura do svg e da vis dentro
-  var alturaSVG = 400, larguraSVG = 900;
-  var   margin = {top: 10, right: 20, bottom:30, left: 45}, // para descolar a vis das bordas do grafico
-      larguraVis = larguraSVG - margin.left - margin.right,
-      alturaVis = alturaSVG - margin.top - margin.bottom;
+      var dadosBoqueirao = [{
+        "mes": 1,
+        "dez_percentil": 19.34,
+        "mediana": 67.9,
+        "noventa_percentil": 89.86
+      }, {
+        "mes": 2,
+        "dez_percentil": 20.32,
+        "mediana": 65.2,
+        "noventa_percentil": 89.14
+      }, {
+        "mes": 3,
+        "dez_percentil": 20.95,
+        "mediana": 78.7,
+        "noventa_percentil": 100
+      }, {
+        "mes": 4,
+        "dez_percentil": 27.14,
+        "mediana": 87.1,
+        "noventa_percentil": 100
+      }, {
+        "mes": 5,
+        "dez_percentil": 27.16,
+        "mediana": 85.1,
+        "noventa_percentil": 102.04
+      }, {
+        "mes": 6,
+        "dez_percentil": 26,
+        "mediana": 83.5,
+        "noventa_percentil": 100.88
+      }, {
+        "mes": 7,
+        "dez_percentil": 24.88,
+        "mediana": 81.7,
+        "noventa_percentil": 100.32
+      }, {
+        "mes": 8,
+        "dez_percentil": 23.68,
+        "mediana": 79.9,
+        "noventa_percentil": 99.24
+      }, {
+        "mes": 9,
+        "dez_percentil": 22.36,
+        "mediana": 77.8,
+        "noventa_percentil": 96.82
+      }, {
+        "mes": 10,
+        "dez_percentil": 20.92,
+        "mediana": 74,
+        "noventa_percentil": 94.12
+      }, {
+        "mes": 11,
+        "dez_percentil": 19.62,
+        "mediana": 70.4,
+        "noventa_percentil": 91.34
+      }, {
+        "mes": 12,
+        "dez_percentil": 19.06,
+        "mediana": 67.3,
+        "noventa_percentil": 89.42
+      }];
+      
+      var alturaSVG = 400, larguraSVG = 900;
+      var	margin = {top: 10, right: 20, bottom:30, left: 45}, 
+          larguraVis = larguraSVG - margin.left - margin.right,
+          alturaVis = alturaSVG - margin.top - margin.bottom;
 
-  /*
-   * Prepara onde adicionaremos a visualizacao
-   */
-  var grafico = d3.select('#chart') // cria elemento &lt;svg&gt; com um &lt;g&gt; dentro
-    .append('svg')
-      .attr('width', larguraVis + margin.left + margin.right)
-      .attr('height', alturaVis + margin.top + margin.bottom)
-    .append('g') // para entender o &lt;g&gt; vá em x03-detalhes-svg.html
-      .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
+      
 
-  // === EDITE DAQUI ===
-  /*
-   * As escalas
-   */
-  var x = d3.scaleLinear()
-            .domain(d3.extent(dadosBoqueirao, (d, i) =&gt; d.noventa_percentil))
-            .range([0, larguraVis]); // Configure essa escala com domain, range e padding
+      var grafico = d3.select('#chart') 
+        .append('svg')
+          .attr('width', larguraVis + margin.left + margin.right)
+          .attr('height', alturaVis + margin.top + margin.bottom)
+        .append('g') 
+          .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
 
-  var y = d3.scaleLinear()
-            .domain(d3.extent(dadosBoqueirao, (d, i) =&gt; d.dez_percentil))
-            .range([alturaVis, 0]);      // Configure essa escala com domain e range
-                           // Lembre que uma escala pode converter de 1..10 -&gt; 100..1
+      
+      
 
-  var color = function(mes){
-    if(mes &gt;= 1 &amp;&amp; mes &lt;= 6){
-      return &quot;blue&quot;;
-    }else{
-      return &quot;red&quot;;
-    }
-  }
+      var x = d3.scaleLinear()
+                .domain(d3.extent(dadosBoqueirao, (d, i) => d.noventa_percentil))
+                .range([0, larguraVis]); 
 
-  // === ATÉ DAQUI ===
-  /*
-   * As marcas
-   */
-  grafico.selectAll('.dot')
-          .data(dadosBoqueirao)
-          .enter()
-            .append('circle')
-              .attr('class', 'dot')
-              .attr('r', 3.5)
-              .attr('cx', d =&gt; x(d.noventa_percentil))
-              .attr('cy', d =&gt; y(d.dez_percentil))
-              .attr('fill', d =&gt; color(d.mes));
+      var y = d3.scaleLinear()
+                .domain(d3.extent(dadosBoqueirao, (d, i) => d.dez_percentil))
+                .range([alturaVis, 0]);      
+                               
+
+      var color = function(mes){
+        if(mes >= 1 && mes <= 6){
+          return "blue";
+        }else{
+          return "red";
+        }
+      }
+
+      
+      
+
+      grafico.selectAll('.dot')
+              .data(dadosBoqueirao)
+              .enter()
+                .append('circle')
+                  .attr('class', 'dot')
+                  .attr('r', 3.5)
+                  .attr('cx', d => x(d.noventa_percentil))
+                  .attr('cy', d => y(d.dez_percentil))
+                  .attr('fill', d => color(d.mes));
 
 
-  var color = [
-     {'legenda':'Mês chuvoso',
-      'cor': 'blue'},
-     {'legenda':'Mês seco',
-      'cor': 'red'}];
-  // draw legend
-  var legend = grafico.selectAll(&quot;.legend&quot;)
-      .data(color)
-    .enter().append(&quot;g&quot;)
-      .attr(&quot;class&quot;, &quot;legend&quot;)
-      .attr(&quot;transform&quot;, function(d, i) { return &quot;translate(0,&quot; + i * 20 + &quot;)&quot;; });
+      var color = [
+         {'legenda':'Mês chuvoso',
+          'cor': 'blue'},
+         {'legenda':'Mês seco',
+          'cor': 'red'}];
+      
+      var legend = grafico.selectAll(".legend")
+          .data(color)
+        .enter().append("g")
+          .attr("class", "legend")
+          .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
-  // draw legend colored rectangles
-  legend.append(&quot;rect&quot;)
-      .attr(&quot;x&quot;, larguraVis - 18)
-      .attr(&quot;y&quot;, alturaVis - 50)
-      .attr(&quot;width&quot;, 18)
-      .attr(&quot;height&quot;, 18)
-      .style(&quot;fill&quot;, (d) =&gt; d.cor);
+      
+      legend.append("rect")
+          .attr("x", larguraVis - 18)
+          .attr("y", alturaVis - 50)
+          .attr("width", 18)
+          .attr("height", 18)
+          .style("fill", (d) => d.cor);
 
-  // draw legend text
-  legend.append(&quot;text&quot;)
-      .attr(&quot;x&quot;, larguraVis - 24)
-      .attr(&quot;y&quot;, alturaVis - 50)
-      .attr(&quot;dy&quot;, &quot;.90em&quot;)
-      .style(&quot;text-anchor&quot;, &quot;end&quot;)
-      .text(function(d) { return d.legenda;})
-  /*
-   * Os eixos
-   */
-  grafico.append(&quot;g&quot;)
-          .attr(&quot;class&quot;, &quot;x axis&quot;)
-          .attr(&quot;transform&quot;, &quot;translate(0,&quot; + alturaVis + &quot;)&quot;)
-          .call(d3.axisBottom(x)); // magica do d3: gera eixo a partir da escala
+      
+      legend.append("text")
+          .attr("x", larguraVis - 24)
+          .attr("y", alturaVis - 50)
+          .attr("dy", ".90em")
+          .style("text-anchor", "end")
+          .text(function(d) { return d.legenda;})
+      
 
-  grafico.append('g')
-          .attr('transform', 'translate(0,0)')
-          .call(d3.axisLeft(y))  // gera eixo a partir da escala
+      grafico.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + alturaVis + ")")
+              .call(d3.axisBottom(x)); 
 
-  grafico.append(&quot;text&quot;)
-    .attr(&quot;transform&quot;, &quot;translate(-30,&quot; + (alturaVis + margin.top)/2 + &quot;) rotate(-90)&quot;)
-    .text(&quot;10 percentil&quot;);
+      grafico.append('g')
+              .attr('transform', 'translate(0,0)')
+              .call(d3.axisLeft(y))  
 
-  grafico.append(&quot;text&quot;)
-    .attr(&quot;transform&quot;, &quot;translate(&quot; + (larguraVis / 2) + &quot;,&quot; + (alturaVis + 30) + &quot;)&quot;)
-    .text(&quot;90 percentil&quot;);
+      grafico.append("text")
+        .attr("transform", "translate(-30," + (alturaVis + margin.top)/2 + ") rotate(-90)")
+        .text("10 percentil");
 
-&lt;/script&gt;
-</code></pre>
+      grafico.append("text")
+        .attr("transform", "translate(" + (larguraVis / 2) + "," + (alturaVis + 30) + ")")
+        .text("90 percentil");
 
-<p></body>
-</html></p>
+    </script>
+  </body>
+</html>
+

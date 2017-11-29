@@ -32,15 +32,5 @@
       <description>Barras simples    Lab 2 - Parte 2   A visualização em si:     .mychart rect { fill: steelblue; } .mychart rect:hover { fill: goldenrod; } .mychart text { font: 12px sans-serif; text-anchor: left; color: black; }  &#34;use strict&#34; var dadosBoqueirao = [{ &#34;mes&#34;: 1, &#34;dez_percentil&#34;: 19.34, &#34;mediana&#34;: 67.9, &#34;noventa_percentil&#34;: 89.86 }, { &#34;mes&#34;: 2, &#34;dez_percentil&#34;: 20.32, &#34;mediana&#34;: 65.2, &#34;noventa_percentil&#34;: 89.14 }, { &#34;</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://fabianaag.github.io/portfolio-vis/1/01/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://fabianaag.github.io/portfolio-vis/1/01/</guid>
-      <description>&amp;lt;!DOCTYPE html&amp;gt;  Barras simples    Lab 2 - Parte 2   A visualização em si:   
-&amp;lt;style&amp;gt; .mychart rect { fill: steelblue; } .mychart rect:hover { fill: goldenrod; } .mychart text { font: 12px sans-serif; text-anchor: left; color: black; } &amp;lt;/style&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; &amp;quot;use strict&amp;quot; var dadosBoqueirao = [{ &amp;quot;mes&amp;quot;: 1, &amp;quot;dez_percentil&amp;quot;: 19.34, &amp;quot;mediana&amp;quot;: 67.9, &amp;quot;noventa_percentil&amp;quot;: 89.86 }, { &amp;quot;mes&amp;quot;: 2, &amp;quot;dez_percentil&amp;quot;: 20.32, &amp;quot;mediana&amp;quot;: 65.</description>
-    </item>
-    
   </channel>
 </rss>
