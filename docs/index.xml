@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo tranquilpeak theme</title>
+    <title>Visualização da Informação - Fabiana Alves</title>
     <link>https://fabianaag.github.io/portfolio-vis/</link>
-    <description>Recent content on Hugo tranquilpeak theme</description>
+    <description>Recent content on Visualização da Informação - Fabiana Alves</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
-    <lastBuildDate>Thu, 16 Nov 2017 13:26:56 -0300</lastBuildDate>
+    <lastBuildDate>Wed, 29 Nov 2017 13:26:56 -0300</lastBuildDate>
     
 	<atom:link href="https://fabianaag.github.io/portfolio-vis/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Minha visualização - D3</title>
+      <link>https://fabianaag.github.io/portfolio-vis/2017/11/minha-visualiza%C3%A7%C3%A3o---d3/</link>
+      <pubDate>Wed, 29 Nov 2017 13:26:56 -0300</pubDate>
+      
+      <guid>https://fabianaag.github.io/portfolio-vis/2017/11/minha-visualiza%C3%A7%C3%A3o---d3/</guid>
+      <description>&lt;p&gt;Pontos com a posição horizontal sendo o 90-percentil e a vertical 10-percentil, e a cor do ponto dizendo se é mês de período chuvoso ou não.
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Visualizações Açude de Boqueirão</title>
@@ -19,17 +29,8 @@
       <guid>https://fabianaag.github.io/portfolio-vis/2017/11/visualiza%C3%A7%C3%B5es-a%C3%A7ude-de-boqueir%C3%A3o/</guid>
       <description>&lt;p&gt;Volume do Açude de Boqueirão por meses.&lt;/p&gt;
 
-&lt;p&gt;a relação entre o maior São João do Mundo e a maior crise hídrica da história de Campina Grande nos mostra duas faces da mesma moeda a da irracionalidade capitalista que superaremos com a luta.
+&lt;p&gt;A relação entre o maior São João do Mundo e a maior crise hídrica da história de Campina Grande nos mostra duas faces da mesma moeda a da irracionalidade capitalista que superaremos com a luta.
  &lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://fabianaag.github.io/portfolio-vis/1/01/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://fabianaag.github.io/portfolio-vis/1/01/</guid>
-      <description>Barras simples    Lab 2 - Parte 2   A visualização em si:     .mychart rect { fill: steelblue; } .mychart rect:hover { fill: goldenrod; } .mychart text { font: 12px sans-serif; text-anchor: left; color: black; }  &#34;use strict&#34; var dadosBoqueirao = [{ &#34;mes&#34;: 1, &#34;dez_percentil&#34;: 19.34, &#34;mediana&#34;: 67.9, &#34;noventa_percentil&#34;: 89.86 }, { &#34;mes&#34;: 2, &#34;dez_percentil&#34;: 20.32, &#34;mediana&#34;: 65.2, &#34;noventa_percentil&#34;: 89.14 }, { &#34;</description>
     </item>
     
   </channel>

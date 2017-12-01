@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <title>Barras simples</title>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+---
+title: "Minha visualização - D3"
+date: 2017-11-29T13:26:56-03:00
+draft: false
+---
+Pontos com a posição horizontal sendo o 90-percentil e a vertical 10-percentil, e a cor do ponto dizendo se é mês de período chuvoso ou não. 
+<!--more-->
+    
+<script src="https://d3js.org/d3.v4.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  </head>
-  <body>
     <div class="container">
       <div class="row">
         <h2>Lab 2 - Parte 2</h2>
@@ -201,6 +202,4 @@
         .text("90 percentil");
 
     </script>
-  </body>
-</html>
 
