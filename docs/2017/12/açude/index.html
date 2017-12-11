@@ -20,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.31.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Visualizações Açude de Boqueirão</title>
+    <title>Açude</title>
     <meta name="author" content="Fabiana Alves">
     <meta name="keywords" content="">
 
@@ -28,24 +28,21 @@
     
 
     
-    <meta name="description" content="Volume do Açude de Boqueirão por meses.
+    <meta name="description" content="DESCRIÇÃO DA VISUALIZAÇÃO
 
-A relação entre o maior São João do Mundo e a maior crise hídrica da história de Campina Grande nos mostra duas faces da mesma moeda a da irracionalidade capitalista que superaremos com a luta.
- ">
-    <meta property="og:description" content="Volume do Açude de Boqueirão por meses.
+">
+    <meta property="og:description" content="DESCRIÇÃO DA VISUALIZAÇÃO
 
-A relação entre o maior São João do Mundo e a maior crise hídrica da história de Campina Grande nos mostra duas faces da mesma moeda a da irracionalidade capitalista que superaremos com a luta.
- ">
+">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Visualizações Açude de Boqueirão">
-    <meta property="og:url" content="/2017/11/visualiza%C3%A7%C3%B5es-a%C3%A7ude-de-boqueir%C3%A3o/">
+    <meta property="og:title" content="Açude">
+    <meta property="og:url" content="/2017/12/a%C3%A7ude/">
     <meta property="og:site_name" content="Visualização da Informação - Fabiana Alves">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Visualização da Informação - Fabiana Alves">
-    <meta name="twitter:description" content="Volume do Açude de Boqueirão por meses.
+    <meta name="twitter:description" content="DESCRIÇÃO DA VISUALIZAÇÃO
 
-A relação entre o maior São João do Mundo e a maior crise hídrica da história de Campina Grande nos mostra duas faces da mesma moeda a da irracionalidade capitalista que superaremos com a luta.
- ">
+">
     
     
 
@@ -170,15 +167,15 @@ A relação entre o maior São João do Mundo e a maior crise hídrica da histó
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Visualizações Açude de Boqueirão
+      Açude
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2017-11-16T13:26:56-03:00">
+      <time itemprop="datePublished" datetime="2017-12-11T19:08:44-03:00">
         
-  Novembro 16, 2017
+  Dezembro 11, 2017
 
       </time>
     
@@ -189,109 +186,149 @@ A relação entre o maior São João do Mundo e a maior crise hídrica da histó
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Volume do Açude de Boqueirão por meses.</p>
+              <p>DESCRIÇÃO DA VISUALIZAÇÃO</p>
 
-<p>A relação entre o maior São João do Mundo e a maior crise hídrica da história de Campina Grande nos mostra duas faces da mesma moeda a da irracionalidade capitalista que superaremos com a luta.
- </p>
+<p></p>
 
-<div id="vis" width=300></div>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <div class="container">
+      <div class="row">
+        <h2>Lab 2 - Parte 4</h2>
+      </div>
+      <div class="row">
+      </div>
+      <div class="row">
+        <h3>A visualização em si:</h3>
+        <br>
+        <div class="row mychart" id="chart">
+      </div>
+      </div>
+    </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.7/vega.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.0.1/vega-lite.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"></script>
-<script>
-    const spec = {
-    "title": "Volume do Açude de Boqueirão ao Longo dos Anos",
-  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-  "data": {
-    "url": "https://api.insa.gov.br/reservatorios/12172/monitoramento",
-    "format": {
-      "type": "json",
-      "property": "volumes",
-      "parse" : {"DataInformacao": "utc:'%d/%m/%Y'"}
-    }
-  },
-   "width": 600,
-   "height": 230,
-   "mark": {
-    "type": "bar",
-    "interpolate": "monotone"
-  },
-  "encoding": {
-    "x": {
-      "timeUnit": "month",
-      "field": "DataInformacao",
-      "type": "temporal",
-      "axis": {
-        "title": "Ano"
+    <style>
+      .mychart rect {
+        fill: steelblue;
       }
-    },
-    "y": {
-      "aggregate": "average",
-      "field": "VolumePercentual",
-      "type": "quantitative",
-      "axis": {
-        "title": "Volume (%)"
+
+      .mychart rect:hover {
+        fill: goldenrod;
       }
-    },
-    "color": {"value": "red"}
-  }
 
-
-
-
-};
-    vegaEmbed('#vis', spec).catch(console.warn);
-</script>
-
-<p>Comentario - TESTE</p>
-
-<div id="vis2" width=300></div>
-
-<script>
-    const spec2 = {
-    "title": "Volume do Açude de Boqueirão ao Longo dos Anos",
-  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-  "data": {
-    "url": "https://api.insa.gov.br/reservatorios/12172/monitoramento",
-    "format": {
-      "type": "json",
-      "property": "volumes",
-      "parse" : {"DataInformacao": "utc:'%d/%m/%Y'"}
-    }
-  },
-   "width": 600,
-   "height": 230,
-   "mark": {
-    "type": "point",
-    "interpolate": "monotone"
-  },
-  "encoding": {
-    "x": {
-      "timeUnit": "month",
-      "field": "DataInformacao",
-      "type": "temporal",
-      "axis": {
-        "title": "Ano"
+      .mychart text {
+        font: 12px sans-serif;
+        text-anchor: left;
+        color: black;
       }
-    },
-    "y": {
-      "aggregate": "average",
-      "field": "VolumePercentual",
-      "type": "quantitative",
-      "axis": {
-        "title": "Volume (%)"
+    </style>
+
+    <script type="text/javascript">
+      "use strict"
+
+      d3.csv(".dados.csv", function(dados){
+        console.log(dados);
+        });
+
+      // definicoes de altura e largura do svg e da vis dentro
+      var alturaSVG = 400, larguraSVG = 900;
+      var   margin = {top: 10, right: 20, bottom:30, left: 45}, // para descolar a vis das bordas do grafico
+          larguraVis = larguraSVG - margin.left - margin.right,
+          alturaVis = alturaSVG - margin.top - margin.bottom;
+
+      /*
+       * Prepara onde adicionaremos a visualizacao
+       */
+      var grafico = d3.select('#chart') // cria elemento <svg> com um <g> dentro
+        .append('svg')
+          .attr('width', larguraVis + margin.left + margin.right)
+          .attr('height', alturaVis + margin.top + margin.bottom)
+        .append('g') // para entender o <g> vá em x03-detalhes-svg.html
+          .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
+
+      // === EDITE DAQUI ===
+      /*
+       * As escalas
+       */
+      var x = d3.scaleLinear()
+                .domain(d3.extent(dadosBoqueirao, (d, i) => d.noventa_percentil))
+                .range([0, larguraVis]); // Configure essa escala com domain, range e padding
+
+      var y = d3.scaleLinear()
+                .domain(d3.extent(dadosBoqueirao, (d, i) => d.dez_percentil))
+                .range([alturaVis, 0]);      // Configure essa escala com domain e range
+                               // Lembre que uma escala pode converter de 1..10 -> 100..1
+
+      var color = function(mes){
+        if(mes >= 1 && mes <= 6){
+          return "blue";
+        }else{
+          return "red";
+        }
       }
-    },
-    "color": {"value": "red"}
-  }
+
+      // === ATÉ DAQUI ===
+      /*
+       * As marcas
+       */
+      grafico.selectAll('.dot')
+              .data(dadosBoqueirao)
+              .enter()
+                .append('circle')
+                  .attr('class', 'dot')
+                  .attr('r', 3.5)
+                  .attr('cx', d => x(d.noventa_percentil))
+                  .attr('cy', d => y(d.dez_percentil))
+                  .attr('fill', d => color(d.mes));
 
 
+      var color = [
+         {'legenda':'Mês chuvoso',
+          'cor': 'blue'},
+         {'legenda':'Mês seco',
+          'cor': 'red'}];
+      // draw legend
+      var legend = grafico.selectAll(".legend")
+          .data(color)
+        .enter().append("g")
+          .attr("class", "legend")
+          .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
+      // draw legend colored rectangles
+      legend.append("rect")
+          .attr("x", larguraVis - 18)
+          .attr("y", alturaVis - 50)
+          .attr("width", 18)
+          .attr("height", 18)
+          .style("fill", (d) => d.cor);
 
-};
-    vegaEmbed('#vis2', spec2).catch(console.warn);
-</script>
+      // draw legend text
+      legend.append("text")
+          .attr("x", larguraVis - 24)
+          .attr("y", alturaVis - 50)
+          .attr("dy", ".90em")
+          .style("text-anchor", "end")
+          .text(function(d) { return d.legenda;})
+      /*
+       * Os eixos
+       */
+      grafico.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + alturaVis + ")")
+              .call(d3.axisBottom(x)); // magica do d3: gera eixo a partir da escala
+
+      grafico.append('g')
+              .attr('transform', 'translate(0,0)')
+              .call(d3.axisLeft(y))  // gera eixo a partir da escala
+
+      grafico.append("text")
+        .attr("transform", "translate(-30," + (alturaVis + margin.top)/2 + ") rotate(-90)")
+        .text("10 percentil");
+
+      grafico.append("text")
+        .attr("transform", "translate(" + (larguraVis / 2) + "," + (alturaVis + 30) + ")")
+        .text("90 percentil");
+
+    </script>
               
             </div>
           </div>
@@ -306,7 +343,7 @@ A relação entre o maior São João do Mundo e a maior crise hídrica da histó
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://fabianaag.github.io/portfolio-vis/2017/11/minha-visualiza%C3%A7%C3%A3o---d3/" data-tooltip="Minha visualização - D3">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">PRÓXIMO</span>
@@ -314,7 +351,7 @@ A relação entre o maior São João do Mundo e a maior crise hídrica da histó
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fabianaag.github.io/portfolio-vis/2017/11/minha-visualiza%C3%A7%C3%A3o---d3/" data-tooltip="Minha visualização - D3">
               
                   <span class="hide-xs hide-sm text-small icon-mr">ANTERIOR</span>
                   <i class="fa fa-angle-right"></i>
@@ -332,19 +369,19 @@ A relação entre o maior São João do Mundo e a maior crise hídrica da histó
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://fabianaag.github.io/portfolio-vis/2017/11/visualiza%C3%A7%C3%B5es-a%C3%A7ude-de-boqueir%C3%A3o/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://fabianaag.github.io/portfolio-vis/2017/12/a%C3%A7ude/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://fabianaag.github.io/portfolio-vis/2017/11/visualiza%C3%A7%C3%B5es-a%C3%A7ude-de-boqueir%C3%A3o/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://fabianaag.github.io/portfolio-vis/2017/12/a%C3%A7ude/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://fabianaag.github.io/portfolio-vis/2017/11/visualiza%C3%A7%C3%B5es-a%C3%A7ude-de-boqueir%C3%A3o/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://fabianaag.github.io/portfolio-vis/2017/12/a%C3%A7ude/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -392,7 +429,7 @@ A relação entre o maior São João do Mundo e a maior crise hídrica da histó
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://fabianaag.github.io/portfolio-vis/2017/11/minha-visualiza%C3%A7%C3%A3o---d3/" data-tooltip="Minha visualização - D3">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">PRÓXIMO</span>
@@ -400,7 +437,7 @@ A relação entre o maior São João do Mundo e a maior crise hídrica da histó
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fabianaag.github.io/portfolio-vis/2017/11/minha-visualiza%C3%A7%C3%A3o---d3/" data-tooltip="Minha visualização - D3">
               
                   <span class="hide-xs hide-sm text-small icon-mr">ANTERIOR</span>
                   <i class="fa fa-angle-right"></i>
@@ -418,19 +455,19 @@ A relação entre o maior São João do Mundo e a maior crise hídrica da histó
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://fabianaag.github.io/portfolio-vis/2017/11/visualiza%C3%A7%C3%B5es-a%C3%A7ude-de-boqueir%C3%A3o/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://fabianaag.github.io/portfolio-vis/2017/12/a%C3%A7ude/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://fabianaag.github.io/portfolio-vis/2017/11/visualiza%C3%A7%C3%B5es-a%C3%A7ude-de-boqueir%C3%A3o/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://fabianaag.github.io/portfolio-vis/2017/12/a%C3%A7ude/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://fabianaag.github.io/portfolio-vis/2017/11/visualiza%C3%A7%C3%B5es-a%C3%A7ude-de-boqueir%C3%A3o/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://fabianaag.github.io/portfolio-vis/2017/12/a%C3%A7ude/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -460,19 +497,19 @@ A relação entre o maior São João do Mundo e a maior crise hídrica da histó
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffabianaag.github.io%2Fportfolio-vis%2F2017%2F11%2Fvisualiza%25C3%25A7%25C3%25B5es-a%25C3%25A7ude-de-boqueir%25C3%25A3o%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffabianaag.github.io%2Fportfolio-vis%2F2017%2F12%2Fa%25C3%25A7ude%2F">
           <i class="fa fa-facebook-official"></i><span>Compartilhar no Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ffabianaag.github.io%2Fportfolio-vis%2F2017%2F11%2Fvisualiza%25C3%25A7%25C3%25B5es-a%25C3%25A7ude-de-boqueir%25C3%25A3o%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ffabianaag.github.io%2Fportfolio-vis%2F2017%2F12%2Fa%25C3%25A7ude%2F">
           <i class="fa fa-twitter"></i><span>Compartilhar no Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ffabianaag.github.io%2Fportfolio-vis%2F2017%2F11%2Fvisualiza%25C3%25A7%25C3%25B5es-a%25C3%25A7ude-de-boqueir%25C3%25A3o%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ffabianaag.github.io%2Fportfolio-vis%2F2017%2F12%2Fa%25C3%25A7ude%2F">
           <i class="fa fa-google-plus"></i><span>Compartilhar no Google&#43;</span>
         </a>
       </li>
@@ -629,9 +666,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/fabianaag.github.io\/portfolio-vis\/2017\/11\/visualiza%C3%A7%C3%B5es-a%C3%A7ude-de-boqueir%C3%A3o\/';
+          this.page.url = 'https:\/\/fabianaag.github.io\/portfolio-vis\/2017\/12\/a%C3%A7ude\/';
           
-            this.page.identifier = '\/2017\/11\/visualiza%C3%A7%C3%B5es-a%C3%A7ude-de-boqueir%C3%A3o\/'
+            this.page.identifier = '\/2017\/12\/a%C3%A7ude\/'
           
         };
         (function() {

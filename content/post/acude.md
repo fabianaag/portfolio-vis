@@ -1,16 +1,18 @@
 ---
-title: "Minha visualização - D3"
-date: 2017-11-29T13:26:56-03:00
+title: "Açude"
+date: 2017-12-11T19:08:44-03:00
 draft: false
 ---
-Pontos com a posição horizontal sendo o 90-percentil e a vertical 10-percentil, e a cor do ponto dizendo se é mês de período chuvoso ou não.
+
+DESCRIÇÃO DA VISUALIZAÇÃO
+
 <!--more-->
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <div class="container">
       <div class="row">
-        <h2>Lab 2 - Parte 2</h2>
+        <h2>Lab 2 - Parte 4</h2>
       </div>
       <div class="row">
       </div>
@@ -41,67 +43,12 @@ Pontos com a posição horizontal sendo o 90-percentil e a vertical 10-percentil
     <script type="text/javascript">
       "use strict"
 
-      var dadosBoqueirao = [{
-        "mes": 1,
-        "dez_percentil": 19.34,
-        "mediana": 67.9,
-        "noventa_percentil": 89.86
-      }, {
-        "mes": 2,
-        "dez_percentil": 20.32,
-        "mediana": 65.2,
-        "noventa_percentil": 89.14
-      }, {
-        "mes": 3,
-        "dez_percentil": 20.95,
-        "mediana": 78.7,
-        "noventa_percentil": 100
-      }, {
-        "mes": 4,
-        "dez_percentil": 27.14,
-        "mediana": 87.1,
-        "noventa_percentil": 100
-      }, {
-        "mes": 5,
-        "dez_percentil": 27.16,
-        "mediana": 85.1,
-        "noventa_percentil": 102.04
-      }, {
-        "mes": 6,
-        "dez_percentil": 26,
-        "mediana": 83.5,
-        "noventa_percentil": 100.88
-      }, {
-        "mes": 7,
-        "dez_percentil": 24.88,
-        "mediana": 81.7,
-        "noventa_percentil": 100.32
-      }, {
-        "mes": 8,
-        "dez_percentil": 23.68,
-        "mediana": 79.9,
-        "noventa_percentil": 99.24
-      }, {
-        "mes": 9,
-        "dez_percentil": 22.36,
-        "mediana": 77.8,
-        "noventa_percentil": 96.82
-      }, {
-        "mes": 10,
-        "dez_percentil": 20.92,
-        "mediana": 74,
-        "noventa_percentil": 94.12
-      }, {
-        "mes": 11,
-        "dez_percentil": 19.62,
-        "mediana": 70.4,
-        "noventa_percentil": 91.34
-      }, {
-        "mes": 12,
-        "dez_percentil": 19.06,
-        "mediana": 67.3,
-        "noventa_percentil": 89.42
-      }];
+      var acude;
+
+      d3.csv("/portfolio-vis/data/dados.csv", function(dados){
+        acude = dados;
+      });
+
       // definicoes de altura e largura do svg e da vis dentro
       var alturaSVG = 400, larguraSVG = 900;
       var	margin = {top: 10, right: 20, bottom:30, left: 45}, // para descolar a vis das bordas do grafico
