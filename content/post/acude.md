@@ -1,151 +1,120 @@
 ---
-title: "Açude"
+title: "Panorama dos transeuntes do Açude Velho"
 date: 2017-12-11T19:08:44-03:00
 draft: false
 ---
 
-DESCRIÇÃO DA VISUALIZAÇÃO
+Um grupo de pesquisadores do [LabRua](https://www.facebook.com/LabRua/) coletou
+dados acerca dos transeuntes do Açude Velho (CG-PB), eles contaram a quantidade
+de pedestres, de carros, e várias outras coisas interessantes. Faremos uso destes
+dados, para descobrir um pouco mais sobre as pessoas que por ali passam, e seus
+hábitos.
 
 <!--more-->
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<div class="container">
+  <!-- PRIMEIRA ATIVIDADE -->
+  <div class="row">
+    <h2>Qual o horário de pico para pedestres que caminham no açude?</h2>
+    <br>
+    <p>Com a visualização a seguir, procuramos identificar os horários em que
+    mais foram observados pedestres nos arredores do açude.</p>
+    <br>
+    <div class="row mychart" id="pico-pedestres"></div>
+    <br>
+    <p>Pelo gráfico, podemos observar que os horários de pico, estão concentrados
+    no final da tarde, mais especificamente entre as 17 horas e as 19 horas.</p>
+  </div>
+  <!-- SEGUNDA ATIVIDADE -->
+  <div class="row">
+    <h2>Quais os meios de transporte favoritos dos transeuntes?</h2>
+    <br>
+    <p>Agora, buscamos entender mais sobre as preferências das pessoas sobre meios
+    de transporte, quais foram as formas de locomoção mais observadas no açude?</p>
+    <br>
+    <div class="row mychart" id="veiculos-preferidos"></div>
+    <br>
+    <p>De acordo com o gráfico, carros são muito mais frequentes do que os outros
+    meios de transporte, é importante dizer entretanto, que isto não é um bom indicativo
+    de que a população em geral prefere carros, este resultado provavelmente acontece
+    pela localização do açude e pelas condições das vias que o circundam.</p>
+  </div>
+
+  <div class="row">
+    <h2>Qual a distribuição dos números de cada meio de transporte, ao longo do dia?</h2>
+    <br>
+    <p>O alto número de carros que vimos, leva em consideração o valor agregado
+    da contagem durante todo o dia, será que temos mais carros durante todo este
+    período? E quanto aos outros meios de transporte?</p>
+    <br>
+    <div class="row mychart" id="veiculos-preferidos-dia"></div>
+    <br>
+    <p>Aqui podemos ter certeza, a preferência por carros deste público em
+    específico é gritante! durante todo o dia foram contados mais carros do que
+    motos, o segundo colocado.</p>
+    <p>Além disso, vemos também que comparado aos dois primeiros colocados, temos
+    um número muito pequeno de ocorrências de outros transportes, entretanto,
+    devemos nos atentar para casos como o de ônibus, onde um só veículo carrega
+    muitos passageiros, por isso o baixo valor da contagem.</p>
+  </div>
+
+  <div class="row">
+    <h2>Como estão divididas as preferências de transportes entre homens e mulheres?</h2>
+    <br>
+    <p>Vamos nos aprofundar um pouco mais na última pergunta. Para pedestres e
+    ciclistas, é possível distinguir as pessoas pelo sexo. Quando o levamos em
+    consideração, as preferências mudam?</p>
+    <br>
+    <div class="row mychart" id="veiculos-preferidos-sexo"></div>
+    <br>
+    <p>Após este gráfico, podemos ver que os homens são maioria, tanto entre os
+    ciclistas, quanto entre os pedestres.
+    Além disto, um detalhe interessante, é o valor muito baixo de mulheres ciclistas.</p>
+  </div>
+</div>
+
+<style>
+  #pico-pedestres rect {
+    fill: steelblue;
+  }
+
+  #pico-pedestres rect:hover {
+    fill: goldenrod;
+  }
+
+  #pico-pedestres text {
+    font: 12px sans-serif;
+    text-anchor: left;
+    color: black;
+  }
+
+  #veiculos-preferidos rect {
+    fill: firebrick;
+  }
+
+  #veiculos-preferidos rect:hover {
+    fill: goldenrod;
+  }
+
+  #veiculos-preferidos-sexo rect:hover{
+    fill: goldenrod;
+  }
+</style>
+
 <script src="https://d3js.org/d3.v4.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <div class="container">
-      <div class="row">
-        <h2>Lab 2 - Parte 4</h2>
-      </div>
-      <div class="row">
-      </div>
-      <div class="row">
-        <h3>A visualização em si:</h3>
-        <br>
-        <div class="row mychart" id="chart">
-      </div>
-      </div>
-    </div>
+<!-- PARA DEIXAR O CÓDIGO MAIS BONITO, EU INCLUÍ UM ARQUIVO CHAMADO VISUALIZACOES.JS
+    NESTE ARQUIVO, FAZEMOS TODAS AS FUNÇÕES QUE GERAM OS GRÁFICOS, ELE SE ENCONTRA
+    NA PASTA STATIC/JS-->
+<script type="text/javascript" src="/js/visualizacoes.js"></script>
+<script type="text/javascript">
 
-    <style>
-      .mychart rect {
-        fill: steelblue;
-      }
+  <!-- AQUI CAPTURAMOS OS DADOS QUE ESTÃO NO ARQUIVO STATIC/DATA/DADOS.CSV E CHAMAMOS AS FUNÇÕES PARA GERAR OS GRÁFICOS -->
+  d3.csv("/portfolio-vis/data/dados.csv", function(dados){
+    picoPedestres(dados); <!-- LEMBRANDO, TODAS ESTAS FUNÇÕES ESTÃO NO ARQUIVO VISUALIZACOES.JS -->
+    veiculosPreferidos(dados);
+    veiculosPreferidosDia(dados);
+    veiculosPreferidosSexo(dados);
+  });
 
-      .mychart rect:hover {
-        fill: goldenrod;
-      }
-
-      .mychart text {
-        font: 12px sans-serif;
-        text-anchor: left;
-        color: black;
-      }
-    </style>
-
-    <script type="text/javascript">
-      "use strict"
-
-      var acude;
-
-      d3.csv("/portfolio-vis/data/dados.csv", function(dados){
-        acude = dados;
-      });
-
-      // definicoes de altura e largura do svg e da vis dentro
-      var alturaSVG = 400, larguraSVG = 900;
-      var	margin = {top: 10, right: 20, bottom:30, left: 45}, // para descolar a vis das bordas do grafico
-          larguraVis = larguraSVG - margin.left - margin.right,
-          alturaVis = alturaSVG - margin.top - margin.bottom;
-
-      /*
-       * Prepara onde adicionaremos a visualizacao
-       */
-      var grafico = d3.select('#chart') // cria elemento <svg> com um <g> dentro
-        .append('svg')
-          .attr('width', larguraVis + margin.left + margin.right)
-          .attr('height', alturaVis + margin.top + margin.bottom)
-        .append('g') // para entender o <g> vá em x03-detalhes-svg.html
-          .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
-
-      // === EDITE DAQUI ===
-      /*
-       * As escalas
-       */
-      var x = d3.scaleLinear()
-                .domain(d3.extent(dadosBoqueirao, (d, i) => d.noventa_percentil))
-                .range([0, larguraVis]); // Configure essa escala com domain, range e padding
-
-      var y = d3.scaleLinear()
-                .domain(d3.extent(dadosBoqueirao, (d, i) => d.dez_percentil))
-                .range([alturaVis, 0]);      // Configure essa escala com domain e range
-                               // Lembre que uma escala pode converter de 1..10 -> 100..1
-
-      var color = function(mes){
-        if(mes >= 1 && mes <= 6){
-          return "blue";
-        }else{
-          return "red";
-        }
-      }
-
-      // === ATÉ DAQUI ===
-      /*
-       * As marcas
-       */
-      grafico.selectAll('.dot')
-              .data(dadosBoqueirao)
-              .enter()
-                .append('circle')
-                  .attr('class', 'dot')
-                  .attr('r', 3.5)
-                  .attr('cx', d => x(d.noventa_percentil))
-                  .attr('cy', d => y(d.dez_percentil))
-                  .attr('fill', d => color(d.mes));
-
-
-      var color = [
-         {'legenda':'Mês chuvoso',
-          'cor': 'blue'},
-         {'legenda':'Mês seco',
-          'cor': 'red'}];
-      // draw legend
-      var legend = grafico.selectAll(".legend")
-          .data(color)
-        .enter().append("g")
-          .attr("class", "legend")
-          .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-      // draw legend colored rectangles
-      legend.append("rect")
-          .attr("x", larguraVis - 18)
-          .attr("y", alturaVis - 50)
-          .attr("width", 18)
-          .attr("height", 18)
-          .style("fill", (d) => d.cor);
-
-      // draw legend text
-      legend.append("text")
-          .attr("x", larguraVis - 24)
-          .attr("y", alturaVis - 50)
-          .attr("dy", ".90em")
-          .style("text-anchor", "end")
-          .text(function(d) { return d.legenda;})
-      /*
-       * Os eixos
-       */
-      grafico.append("g")
-              .attr("class", "x axis")
-              .attr("transform", "translate(0," + alturaVis + ")")
-              .call(d3.axisBottom(x)); // magica do d3: gera eixo a partir da escala
-
-      grafico.append('g')
-              .attr('transform', 'translate(0,0)')
-              .call(d3.axisLeft(y))  // gera eixo a partir da escala
-
-      grafico.append("text")
-        .attr("transform", "translate(-30," + (alturaVis + margin.top)/2 + ") rotate(-90)")
-        .text("10 percentil");
-
-      grafico.append("text")
-        .attr("transform", "translate(" + (larguraVis / 2) + "," + (alturaVis + 30) + ")")
-        .text("90 percentil");
-
-    </script>
+</script>
