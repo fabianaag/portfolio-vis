@@ -237,12 +237,16 @@ hábitos.</p>
 
 <p><div class="row">
     <h2>Qual a distribuição dos números de cada meio de transporte, ao longo do dia?</h2>
+    <h4 style="color: #bdc3c7"><em>Visualização Interativa</em></h4>
+    <h6><em>Esta é uma visualização interativa, experimente passar o mouse sobre
+    as linhas, as legendas e clicar nos botões</em></h6>
     <br>
     <p>O alto número de carros que vimos, leva em consideração o valor agregado
     da contagem durante todo o dia, será que temos mais carros durante todo este
     período? E quanto aos outros meios de transporte?</p>
     <br>
     <div class="row mychart" id="veiculos-preferidos-dia"></div>
+    <div id="controls" class="col"/>
     <br>
     <p>Aqui podemos ter certeza, a preferência por carros deste público em
     específico é gritante! durante todo o dia foram contados mais carros do que
@@ -294,6 +298,18 @@ hábitos.</p>
   #veiculos-preferidos-sexo rect:hover{
     fill: goldenrod;
   }
+
+  div.tooltip {
+    position: absolute;         
+    text-align: center;         
+
+    padding: 2px;               
+    font: 12px sans-serif;      
+    background: lightsteelblue;
+    border: 0px;        
+    border-radius: 8px;         
+    pointer-events: none;           
+}
 </style>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>

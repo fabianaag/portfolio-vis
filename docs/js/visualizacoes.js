@@ -18,7 +18,6 @@ var picoPedestres = function(dados){
     .append('g') // para entender o <g> vá em x03-detalhes-svg.html
     .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
 
-  // AQUI FAZEMOS O AGRUPAMENTO DOS DADOS POR HORÁRIO, É O QUE FIZEMOS NO LCC2
   var dadosHorario = d3.nest()
     .key(function(d) {return d.horario_inicial})
     .rollup(function(v){
@@ -35,14 +34,11 @@ var picoPedestres = function(dados){
     .domain(horarios)
     .range([0, larguraVis]);
 
-  // A ESCALA PARA OS VALORES Y, MAPEIA O VALOR DE PESSOAS, PARA UM NÚMERO DE PÍXEL NA TELA
   var maiorContagemPessoas = d3.max(dadosHorario, function(d){return d.value});
   var escalaY = d3.scaleLinear()
     .domain([0, maiorContagemPessoas])
     .range([alturaVis, 0]);
 
-
-  //console.log(dadosHorario);
   var barras = grafico.selectAll("rect")
     .data(dadosHorario)
     .enter()
@@ -142,7 +138,6 @@ var veiculosPreferidosDia = function(dados){
     .append('g') // para entender o <g> vá em x03-detalhes-svg.html
     .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
 
-  // AQUI FAZEMOS O AGRUPAMENTO DOS DADOS POR HORÁRIO, É O QUE FIZEMOS NO LCC2
   var dadosHorario = d3.nest()
     .key(function(d) {return d.horario_inicial})
     .rollup(function(v){
@@ -210,57 +205,183 @@ var veiculosPreferidosDia = function(dados){
     .x(function(d) { return escalaX(d.key); })
     .y(function(d) { return escalaY(d.value.pedestres); });
 
-  grafico.append("path")
+  var div = d3.select("body").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+  var adicionaCarros = function(){
+    grafico.append("path")
+        .datum(dadosHorario)
+        .attr("fill", "none")
+        .attr("id", "Carros")
+        .attr("stroke", "steelblue")
+        .attr("stroke-linejoin", "round")
+        .attr("stroke-linecap", "round")
+        .attr("stroke-width", 3)
+        .attr("d", linhaCarros)
+        .on("mouseover", function(d) {
+                    div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    div	.html("<strong>Valor Médio durante o dia</strong>" +
+                              "<br/>" + d3.mean(d, function(dados) { return dados.value.carros}))
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+                    })
+                .on("mouseout", function(d) {
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
+  }
+  var adicionaMotos = function(){
+    grafico.append("path")
       .datum(dadosHorario)
       .attr("fill", "none")
-      .attr("stroke", "steelblue")
-      .attr("stroke-linejoin", "round")
-      .attr("stroke-linecap", "round")
-      .attr("stroke-width", 1.5)
-      .attr("d", linhaCarros);
-  grafico.append("path")
-      .datum(dadosHorario)
-      .attr("fill", "none")
+      .attr("id", "Motos")
       .attr("stroke", "#e74c3c")
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
-      .attr("stroke-width", 1.5)
-      .attr("d", linhaMotos);
-  grafico.append("path")
+      .attr("stroke-width", 3)
+      .attr("d", linhaMotos)
+      .on("mouseover", function(d) {
+                  div.transition()
+                      .duration(200)
+                      .style("opacity", .9);
+                  div	.html("<strong>Valor Médio durante o dia</strong>" +
+                            "<br/>" + d3.mean(d, function(dados) { return dados.value.motos}))
+                      .style("left", (d3.event.pageX) + "px")
+                      .style("top", (d3.event.pageY - 28) + "px");
+                  })
+              .on("mouseout", function(d) {
+                  div.transition()
+                      .duration(500)
+                      .style("opacity", 0);
+              });
+  }
+  var adicionaOnibus = function(){
+    grafico.append("path")
       .datum(dadosHorario)
       .attr("fill", "none")
+      .attr("id", "Ônibus")
       .attr("stroke", "#2ecc71")
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
-      .attr("stroke-width", 1.5)
-      .attr("d", linhaOnibus);
-  grafico.append("path")
+      .attr("stroke-width", 3)
+      .attr("d", linhaOnibus)
+      .on("mouseover", function(d) {
+                  div.transition()
+                      .duration(200)
+                      .style("opacity", .9);
+                  div	.html("<strong>Valor Médio durante o dia</strong>" +
+                            "<br/>" + d3.mean(d, function(dados) { return dados.value.onibus}))
+                      .style("left", (d3.event.pageX) + "px")
+                      .style("top", (d3.event.pageY - 28) + "px");
+                  })
+              .on("mouseout", function(d) {
+                  div.transition()
+                      .duration(500)
+                      .style("opacity", 0);
+              });
+  }
+  var adicionaCaminhoes = function(){
+    grafico.append("path")
       .datum(dadosHorario)
       .attr("fill", "none")
+      .attr("id", "Caminhões")
       .attr("stroke", "#9b59b6")
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
-      .attr("stroke-width", 1.5)
-      .attr("d", linhaCaminhoes);
-  grafico.append("path")
+      .attr("stroke-width", 3)
+      .attr("d", linhaCaminhoes)
+      .on("mouseover", function(d) {
+                  div.transition()
+                      .duration(200)
+                      .style("opacity", .9);
+                  div	.html("<strong>Valor Médio durante o dia</strong>" +
+                            "<br/>" + d3.mean(d, function(dados) { return dados.value.caminhoes}))
+                      .style("left", (d3.event.pageX) + "px")
+                      .style("top", (d3.event.pageY - 28) + "px");
+                  })
+              .on("mouseout", function(d) {
+                  div.transition()
+                      .duration(500)
+                      .style("opacity", 0);
+              });
+  }
+  var adicionaBicicletas = function(){
+    grafico.append("path")
       .datum(dadosHorario)
       .attr("fill", "none")
+      .attr("id", "Bicicletas")
       .attr("stroke", "#e67e22")
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
-      .attr("stroke-width", 1.5)
-      .attr("d", linhaBicicletas);
-  grafico.append("path")
+      .attr("stroke-width", 3)
+      .attr("d", linhaBicicletas)
+      .on("mouseover", function(d) {
+                  div.transition()
+                      .duration(200)
+                      .style("opacity", .9);
+                  div	.html("<strong>Valor Médio durante o dia</strong>" +
+                            "<br/>" + d3.mean(d, function(dados) { return dados.value.bicicletas}))
+                      .style("left", (d3.event.pageX) + "px")
+                      .style("top", (d3.event.pageY - 28) + "px");
+                  })
+              .on("mouseout", function(d) {
+                  div.transition()
+                      .duration(500)
+                      .style("opacity", 0);
+              });
+  }
+  var adicionaPedestres = function(){
+    grafico.append("path")
       .datum(dadosHorario)
       .attr("fill", "none")
+      .attr("id", "Pedestres")
       .attr("stroke", "#2c3e50")
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
-      .attr("stroke-width", 1.5)
-      .attr("d", linhaPedestres);
+      .attr("stroke-width", 3)
+      .attr("d", linhaPedestres)
+      .on("mouseover", function(d) {
+                  div.transition()
+                      .duration(200)
+                      .style("opacity", .9);
+                  div	.html("<strong>Valor Médio durante o dia</strong>" +
+                            "<br/>" + d3.mean(d, function(dados) { return dados.value.pedestres}))
+                      .style("left", (d3.event.pageX) + "px")
+                      .style("top", (d3.event.pageY - 28) + "px");
+                  })
+              .on("mouseout", function(d) {
+                  div.transition()
+                      .duration(500)
+                      .style("opacity", 0);
+              });
+  }
 
-      var cores = d3.scaleOrdinal()
-      .range(["steelblue", "#e74c3c", "#2ecc71", "#9b59b6", "#e67e22", "#2c3e50"]);
+  var adicionaElementos = [{"elemento": "Carros",
+                          "funcao": adicionaCarros},
+                          {"elemento": "Motos",
+                          "funcao": adicionaMotos},
+                          {"elemento": "Ônibus",
+                          "funcao": adicionaOnibus},
+                          {"elemento": "Caminhões",
+                          "funcao": adicionaCaminhoes},
+                          {"elemento": "Bicicletas",
+                          "funcao": adicionaBicicletas},
+                          {"elemento": "Pedestres",
+                          "funcao": adicionaPedestres}];
+
+  var adicionaTodosElementos = function(){
+    for(var i = 0; i < adicionaElementos.length; i++){
+      adicionaElementos[i].funcao();
+    }
+  }
+  adicionaTodosElementos();
+
+  var cores = d3.scaleOrdinal()
+    .range(["steelblue", "#e74c3c", "#2ecc71", "#9b59b6", "#e67e22", "#2c3e50"]);
 
   var ticksX = escalaX.domain().filter(function(d,i){ return !(i%3); } );
   grafico.append("g")
@@ -272,7 +393,7 @@ var veiculosPreferidosDia = function(dados){
     .text("Horário")
     .select(".domain");
 
-  grafico.append("g")
+  var legendaY = grafico.append("g")
       .call(d3.axisLeft(escalaY))
     .append("text")
       .attr("fill", "#000")
@@ -292,11 +413,65 @@ var veiculosPreferidosDia = function(dados){
     .enter().append("g")
       .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
+  const dataKeys = veiculos.slice();
+  dataKeys.push("Reiniciar");
+
+  d3.select("#veiculos-preferidos-dia")
+    .append("div")
+      .attr("id", "controls")
+
+  var botaoClicado = function(dimensao){
+    if(dimensao === "Carros"){
+      var maiorContagem = maiorContagemCarros;
+    }else if (dimensao === "Motos") {
+      var maiorContagem = maiorContagemMotos;
+    }else if (dimensao === "Ônibus") {
+      var maiorContagem = maiorContagemOnibus;
+    }else if (dimensao === "Caminhões") {
+      var maiorContagem = maiorContagemCaminhoes;
+    }else if (dimensao === "Bicicletas") {
+      var maiorContagem = maiorContagemBicicletas;
+    }else if (dimensao === "Pedestres") {
+      var maiorContagem = maiorContagemPedestres;
+    }
+
+    if (dimensao === "Reiniciar") {
+      for(var i = 0; i < veiculos.length; i++){
+        d3.select("#" + veiculos[i]).remove();
+      }
+      adicionaTodosElementos();
+    }else{
+      for(var i = 0; i < veiculos.length; i++){
+        if(veiculos[i] !== dimensao){
+          d3.select("#" + veiculos[i]).remove();
+        }
+      }
+    }
+
+  }
+
+  d3.select("#controls").selectAll("button.teams")
+    .data(dataKeys)
+    .enter()
+      .append("button")
+      .attr("class", "btn-default")
+      .on("click", botaoClicado)
+      .html(d => d);
+
+
   legenda.append("rect")
       .attr("x", larguraVis)
       .attr("width", 19)
       .attr("height", 19)
-      .attr("fill", cores);
+      .attr("fill", cores)
+      .on("mouseover", function(d){
+        d3.select("#" + d).
+          attr("stroke-width", 10);
+      })
+      .on("mouseout", function(d){
+        d3.select("#" + d).
+          attr("stroke-width", 3);
+      });
 
   legenda.append("text")
       .attr("x", larguraVis - 5)
